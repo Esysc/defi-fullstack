@@ -15,7 +15,7 @@ updates:
 
   # Vue.js/npm frontend
   - package-ecosystem: "npm"
-    directory: "/frontend" # Confirm/adjust path from your package.json
+    directory: "/frontend"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5
@@ -29,7 +29,7 @@ updates:
           - "vitest"
           - "@vitest/*"
 
-  # Docker images (php-fpm, nginx, postgres from your stack)
+  # Docker images - MULTIPLE BLOCKS
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
@@ -37,6 +37,25 @@ updates:
     open-pull-requests-limit: 3
     labels: ["dependencies", "docker"]
     target-branch: "main"
+  
+  - package-ecosystem: "docker"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies", "docker"]
+  
+  - package-ecosystem: "docker"
+    directory: "/nginx"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies", "docker"]
+  
+  - package-ecosystem: "docker"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies", "docker"]
+
 
   # GitHub Actions (your ci-cd.yml workflows)
   - package-ecosystem: "github-actions"
